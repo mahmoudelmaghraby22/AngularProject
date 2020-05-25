@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "todo-22": {
+      "hosting": {
+        "itiProject": [
+          "todo-22"
+        ]
+      }
+    }
+  }
+}

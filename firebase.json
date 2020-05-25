@@ -1,0 +1,19 @@
+{
+  "hosting": [
+    {
+      "target": "itiProject",
+      "public": "dist/itiProject",
+      "ignore": [
+        "firebase.json",
+        "**/.*",
+        "**/node_modules/**"
+      ],
+      "rewrites": [
+        {
+          "source": "**",
+          "destination": "/index.html"
+        }
+      ]
+    }
+  ]
+}

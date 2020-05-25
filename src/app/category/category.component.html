@@ -1,0 +1,44 @@
+<div class="row justify-content-center md-3">
+        <div class="col-md-4 text-center">
+            <h1>To-Do Categories</h1>
+            <p class="text-info">Lorem ipsum dolor, sit amet consectetur adipisicing elit.</p>
+        </div>
+</div>
+<div class="row">
+    <div class="col-md-12">
+        <form class="form-inline" #f="ngForm"  (ngSubmit)=' f.form.valid && onSubmit(f)'>
+            <div class="col-md-10 form-group ">
+                <input type="text" placeholder="Add New Category Here.." name="categoryName" class="form-control-plaintext add-new " 
+                 required [(ngModel)]='categoryName' #category ='ngModel' [ngClass] ="{'border-danger':f.submitted && category.invalid}" >
+            </div>
+            <button type="submit" class="btn btn-primary col-md-2 btn-todo btn-block"> {{dataStatus}} </button>
+            <div class="text-danger ml-3" *ngIf="f.submitted && category.invalid && category.errors.required">
+                Category Name is required..
+            </div>
+        </form>
+    </div>
+</div>
+
+<div class="row category-list">
+    <div class="col-md-3" *ngFor="let category of categories" [routerLink]="['/todo' , category.id]">
+        <div class="card" [style.border-left-color]='category.data.colorCode'>
+            <div class="card-body">
+                <div class="clearfix">
+                    <div class="float-left">
+                        <div class="badge badge-primary"> CATEGORY</div>
+                    </div>
+                    <div class="float-right cat-tools">
+                        <small><i class="fa fa-pencil-alt text-success" (click)='onEdit(category.data.category,category.id)'></i></small>
+                        <small><i class="fa fa-trash text-danger" (click)='onDelete(category.id)'></i></small>
+                    </div>
+                </div>
+
+                <div class="todo-content">
+                <h3 [style.color] = 'category.data.colorCode'>{{category.data.category}}</h3>
+                <small class="text-secondary">Lorem ipsum dolor sit amet consectetur adipisicing elit.</small>
+                </div>
+                <span class="badge badge-danger">{{category.data.todoCount}} -To-Dos</span>
+            </div>  
+        </div>
+    </div>
+</div> 
